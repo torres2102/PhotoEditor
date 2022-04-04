@@ -28,7 +28,7 @@ int main()
 {
     //int choice{};
     loadImage(image);
-    Merge_Filter();
+    DL_ImageFilter();
     saveImage ();
 //    while (true){
 //
