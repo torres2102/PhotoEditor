@@ -165,7 +165,7 @@ void saveImage () {
     strcat (imageFileName, ".bmp");
     writeGSBMP(imageFileName, image);
 }
-//_________________________________________
+//_________________________________________AA
 void DL_ImageFilter() {
     int darker_or_lighter;
     cout << "1.Darker\n2.lighter\nchoice number"<<endl;
