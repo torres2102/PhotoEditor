@@ -92,7 +92,7 @@ int main()
 
     return 0;
 }
-//sadsadasd
+
 //_________________________________________
 void loadImage (unsigned char image[SIZE][SIZE]) {
     char imageFileName[100];
