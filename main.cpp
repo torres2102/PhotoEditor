@@ -19,16 +19,16 @@ void loadImage(unsigned char image[SIZE][SIZE]);
 void saveImage();
 void BW_Filter();
 void Merge_Filter();
-void  DL_ImageFilter();
+void DL_ImageFilter();
 void Invert_Filter();
-
+void Flip_Image();
 
 
 int main()
 {
     //int choice{};
     loadImage(image);
-    DL_ImageFilter();
+    Flip_Image();
     saveImage ();
 //    while (true){
 //
@@ -152,18 +152,29 @@ void Merge_Filter(){
         }
     }
 }
+void Flip_Image(){
+    const int c = SIZE / 2;
+    int vertically{255};
+    int horizontally{255};
+    int choice; cin >> choice;
+    if (choice ==1)
+        horizontally = c;
+    else vertically = c ;
+    for (int x{}; x < horizontally; x++){
+        for (int y{}; y < vertically;y++){
+            int temp = image[x][y];
+            if (choice == 1){
+                image[x][y] = image[SIZE-x][y];
+                image[SIZE-x][y] = temp;
+            }
+            else{
+                image[x][y] = image[x][SIZE-y];
+                image[x][SIZE-y]= temp;
+            }
 
-//_________________________________________
-void saveImage () {
-    char imageFileName[100];
-    // Get gray scale image target file name
-    cout << "Enter the target image file name: ";
-    cin >> imageFileName;
-    // Add to it .bmp extension and load image
-    strcat (imageFileName, ".bmp");
-    writeGSBMP(imageFileName, image);
+        }
+    }
 }
-//_________________________________________AA
 void DL_ImageFilter() {
     int darker_or_lighter;
     cout << "1.Darker\n2.lighter\nchoice number"<<endl;
@@ -174,4 +185,15 @@ void DL_ImageFilter() {
             else image[i][j] = min(image[i][j]+50, 255);
         }
     }
+}
+
+//_________________________________________
+void saveImage () {
+    char imageFileName[100];
+    // Get gray scale image target file name
+    cout << "Enter the target image file name: ";
+    cin >> imageFileName;
+    // Add to it .bmp extension and load image
+    strcat (imageFileName, ".bmp");
+    writeGSBMP(imageFileName, image);
 }
