@@ -93,7 +93,6 @@ int main()
     return 0;
 }
 
-//سشمنيتابتنيسالبسللاش
 //_________________________________________
 void loadImage (unsigned char image[SIZE][SIZE]) {
     char imageFileName[100];
@@ -142,7 +141,6 @@ void Invert_Filter() {
 }
 void Merge_Filter(){
     unsigned char image2[SIZE][SIZE];
-
     loadImage(image2);
     for (int i{}; i < SIZE; i++) {
         for (int j{}; j < SIZE; j++) {
