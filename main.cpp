@@ -19,12 +19,16 @@ void loadImage(unsigned char image[SIZE][SIZE]);
 void saveImage();
 void BW_Filter();
 void Merge_Filter();
+void  DL_ImageFilter();
 void Invert_Filter();
+
+
+
 int main()
 {
     //int choice{};
     loadImage(image);
-    Merge_Filter();
+    DL_ImageFilter();
     saveImage ();
 //    while (true){
 //
@@ -159,4 +163,15 @@ void saveImage () {
     strcat (imageFileName, ".bmp");
     writeGSBMP(imageFileName, image);
 }
-
+//_________________________________________AA
+void DL_ImageFilter() {
+    int darker_or_lighter;
+    cout << "1.Darker\n2.lighter\nchoice number"<<endl;
+    cin >> darker_or_lighter;
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if(darker_or_lighter == 1)image[i][j] = image[i][j] / 2;
+            else image[i][j] = min(image[i][j]+50, 255);
+        }
+    }
+}
