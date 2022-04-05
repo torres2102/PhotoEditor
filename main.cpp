@@ -22,13 +22,13 @@ void Merge_Filter();
 void DL_ImageFilter();
 void Invert_Filter();
 void Flip_Image();
-
+void Detect_Image_Edges();
 
 int main()
 {
     //int choice{};
     loadImage(image);
-    Flip_Image();
+    Detect_Image_Edges();
     saveImage ();
 //    while (true){
 //
@@ -186,14 +186,29 @@ void DL_ImageFilter() {
         }
     }
 }
+void Detect_Image_Edges() {
+    unsigned char image2[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            image2[i][j] = image[i][j];
+        }
+    }
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if( image2[i][j + 1] - image[i][j] >= 30) image[i][j] = 0;
+                else if(abs(image2[i][j + 1] - image[i][j]) < 30) image[i][j] = 255;
+            }
+        }
+
+}
 
 //_________________________________________
-void saveImage () {
+void saveImage() {
     char imageFileName[100];
     // Get gray scale image target file name
     cout << "Enter the target image file name: ";
     cin >> imageFileName;
     // Add to it .bmp extension and load image
-    strcat (imageFileName, ".bmp");
+    strcat(imageFileName, ".bmp");
     writeGSBMP(imageFileName, image);
 }
