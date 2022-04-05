@@ -21,6 +21,7 @@ void BW_Filter();
 void Merge_Filter();
 void DL_ImageFilter();
 void Invert_Filter();
+void Rotate_image();
 void Flip_Image();
 
 
@@ -28,7 +29,7 @@ int main()
 {
     //int choice{};
     loadImage(image);
-    Flip_Image();
+    Rotate_image();
     saveImage ();
 //    while (true){
 //
@@ -186,7 +187,20 @@ void DL_ImageFilter() {
         }
     }
 }
+void Rotate_image(){
+    int angle; cin >> angle;
+    for(int i{1}; i <= angle/90; i++ ){
+        for (int i = 0; i < SIZE; i += 1) {
+            for (int j = i+1; j < SIZE; j += 1)
+                swap(image[i][j], image[j][i]);
+        }
+        for(int i{}; i < SIZE; i++){
+            for(int j{}; j < SIZE/2; j++)
+                swap(image[i][j], image[i][SIZE-1-j]);
+        }
+    }
 
+}
 //_________________________________________
 void saveImage () {
     char imageFileName[100];
