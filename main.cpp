@@ -187,6 +187,7 @@ void DL_ImageFilter() {
         }
     }
 }
+
 void Rotate_image(){
     int angle; cin >> angle;
     for(int i{1}; i <= angle/90; i++ ){
