@@ -35,25 +35,19 @@ void Flip_Image();
 
 
 int main() {
-    //int choice{};
     loadImage(image);
-    while (true){
+    while (true) {
         cout << "1- Black & White Filter\n"
                 "2- Invert Filter\n"
                 "3- Merge Filter\n"
                 "4- Flip Image\n"
                 "5- Darken and Lighten Image\n"
                 "6- Rotate Image\n"
-                "7- Detect Image Edges\n"
-                "8- Enlarge Image\n"
-                "9- Shrink Image\n"
-                "10- Mirror 1/2 Image\n"
-                "11- Shuffle Image\n"
-                "12- Blur Image\n"
                 "13- Save the image to a file\n"
                 "0- Exit" << endl;
-        int choice; cin >> choice;
-        switch(choice){
+        int choice;
+        cin >> choice;
+        switch (choice) {
             case 1 :
                 BW_Filter();
                 break;
@@ -96,10 +90,9 @@ int main() {
             case 0 :
                 return 0;
         }
+        return 0;
     }
-    return 0;
 }
-
 
 //_________________________________________
 void loadImage(unsigned char image[SIZE][SIZE]) {
