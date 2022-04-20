@@ -33,39 +33,45 @@ void Rotate_image();
 
 void Flip_Image();
 
+void Shrink_Image();
+
+void Enlarge_Image();
 
 int main() {
     loadImage(image);
-    while (true) {
-        cout << "1- Black & White Filter\n"
-                "2- Invert Filter\n"
-                "3- Merge Filter\n"
-                "4- Flip Image\n"
-                "5- Darken and Lighten Image\n"
-                "6- Rotate Image\n"
-                "13- Save the image to a file\n"
-                "0- Exit" << endl;
-        int choice;
-        cin >> choice;
-        switch (choice) {
-            case 1 :
-                BW_Filter();
-                break;
-            case 2 :
-                Invert_Filter();
-                break;
-            case 3:
-                Merge_Filter();
-                break;
-            case 4 :
-                Flip_Image();
-                break;
-            case 5 :
-                DL_ImageFilter();
-                break;
-            case 6 :
-                Rotate_image();
-                break;
+    Enlarge_Image();
+    saveImage();
+
+//    while (true) {
+//        cout << "1- Black & White Filter\n"
+//                "2- Invert Filter\n"
+//                "3- Merge Filter\n"
+//                "4- Flip Image\n"
+//                "5- Darken and Lighten Image\n"
+//                "6- Rotate Image\n"
+//                "13- Save the image to a file\n"
+//                "0- Exit" << endl;
+//        int choice;
+//        cin >> choice;
+//        switch (choice) {
+//            case 1 :
+//                BW_Filter();
+//                break;
+//            case 2 :
+//                Invert_Filter();
+//                break;
+//            case 3:
+//                Merge_Filter();
+//                break;
+//            case 4 :
+//                Flip_Image();
+//                break;
+//            case 5 :
+//                DL_ImageFilter();
+//                break;
+//            case 6 :
+//                Rotate_image();
+//                break;
 //            case 7 :
 //                Detect_Image_Edges();
 //                break;
@@ -84,15 +90,15 @@ int main() {
 //            case 12 :
 //                Blur_Image();
 //                break;
-            case 13 :
-                saveImage();
-                break;
-            case 0 :
-                return 0;
-        }
+//            case 13 :
+//                saveImage();
+//                break;
+//            case 0 :
+//                return 0;
+//        }
         return 0;
     }
-}
+
 
 //_________________________________________
 void loadImage(unsigned char image[SIZE][SIZE]) {
@@ -170,6 +176,31 @@ void Flip_Image() {
 
         }
     }
+}
+
+void Enlarge_Image(){
+    unsigned char image2[SIZE][SIZE];
+    int quarter;
+    cin >> quarter;
+    int ROW = (quarter < 3? 0:SIZE/2);
+    int COL = (quarter % 2!= 0 ? 0:SIZE/2);
+    int x[]{0,1,0,1};
+    int y[]{0,0,1,1};
+    for(int i{},k{}; i < SIZE;k++,i+=2){
+        for(int j{},z{};j < SIZE;z++,j+=2){
+            for(int g{}; g < 4;g++)
+                image2[i+x[g]][j+y[g]] = image[k+ROW][z+COL];
+
+            }
+        }
+    for(int i{};i<SIZE;i++){
+        for(int j{}; j<SIZE;j++)
+            image[i][j] = image2[i][j];
+    }
+}
+
+void Shrink_Image(){
+
 }
 
 void DL_ImageFilter() {
