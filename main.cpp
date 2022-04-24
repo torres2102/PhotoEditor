@@ -216,7 +216,9 @@ void Flip_Image() {
 
 void Enlarge_Image() {
     int quarter;
+    cout << "Choose quarter to enlarge\n";
     cin >> quarter;
+
     int ROW = (quarter < 3 ? 0 : SIZE / 2);
     int COL = (quarter % 2 != 0 ? 0 : SIZE / 2);
     int x[]{0, 1, 0, 1};
@@ -256,7 +258,7 @@ void Shrink_Image() {
 
 void DL_ImageFilter() {
     int darker_or_lighter;
-    cout << "1.Darker\n2.lighter\nchoice number" << endl;
+    cout << "1.Darker\n2.lighter\n"<< endl;
     cin >> darker_or_lighter;
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
@@ -269,7 +271,7 @@ void DL_ImageFilter() {
 void Rotate_image() {
     int angle;
     cin >> angle;
-
+    cout << "Choose angle to rotate the image : ";
     for (int a{1}; a <= angle / 90; a++) {
         for (int i = 0; i < SIZE; i += 1) {
             for (int j = i + 1; j < SIZE; j += 1)
@@ -464,7 +466,10 @@ void Flip_Image_RGB() {
 
 void Enlarge_Image_RGB() {
     int quarter;
+    cout << "Choose quarter to enlarge\n";
+
     cin >> quarter;
+
     int ROW = (quarter < 3 ? 0 : SIZE / 2);
     int COL = (quarter % 2 != 0 ? 0 : SIZE / 2);
     int x[]{0, 1, 0, 1};
@@ -528,7 +533,10 @@ void DL_ImageFilter_RGB() {
 
 void Rotate_image_RGB() {
     int angle;
+    cout << "Choose angle to rotate the image : ";
+
     cin >> angle;
+
     for (int a{1}; a <= angle / 90; a++) {
         for (int i = 0; i < SIZE; i += 1) {
             for (int j = i + 1; j < SIZE; j += 1) {
