@@ -237,6 +237,7 @@ void Enlarge_Image() {
 }
 
 
+
 void Shrink_Image() {
     int shrink;
     cout << "choose 2 for 1/2\n"
